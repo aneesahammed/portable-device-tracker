@@ -34,7 +34,7 @@
                Margin="25,20,25,0"
                VerticalAlignment="Top"
                Source="/Assets/Images/appIcon.ico"
-               Stretch="None" />
+               Stretch="UniformToFill" />
 
         <Grid Grid.Column="1">
             <Grid.RowDefinitions>
