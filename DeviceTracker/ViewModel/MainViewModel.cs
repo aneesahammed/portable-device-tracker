@@ -498,7 +498,7 @@ namespace DeviceTracker.ViewModel
                         case DeviceImportOption.Always:
                             
                             //add-device in db
-                            Utility.LogMessage("[ManageNewDevices] [Adding device {0} to database]", connectedDevice.DisplayName);
+                            Utility.LogMessage("[ManageNewDevices] [Adding device {0} to database][STATUS=ALWAYS]", connectedDevice.DisplayName);
                             AddDevice(connectedDevice);
 
                             Utility.LogMessage("[ManageNewDevices] [Call to show notification for device:{0}!!!]", connectedDevice.DisplayName);
@@ -514,7 +514,7 @@ namespace DeviceTracker.ViewModel
 
                         case DeviceImportOption.Never:
                             //add-device in db
-                            Utility.LogMessage("[ManageNewDevices] [Adding device {0} to database]", connectedDevice.DisplayName);
+                            Utility.LogMessage("[ManageNewDevices] [Adding device {0} to database][STATUS=NEVER]", connectedDevice.DisplayName);
                             AddDevice(connectedDevice);
                             break;
 
@@ -522,8 +522,12 @@ namespace DeviceTracker.ViewModel
                             //no need to store in db.
 
                             //copy files->default-media-path
-                            Utility.LogMessage("[ManageNewDevices] [Copy contents from device:{0}!!!]", connectedDevice.DisplayName);
-                            CopyDeviceContents(connectedDevice);
+                            Utility.LogMessage("[ManageNewDevices] [Copy contents from device:{0}!!!][STATUS=JUSTONCE]", connectedDevice.DisplayName);
+                            Task.Run(() =>
+                                {
+                                    CopyDeviceContents(connectedDevice);
+                                });
+                            
                             break;
                     }
                 }));
