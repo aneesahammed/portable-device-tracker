@@ -9,5 +9,5 @@
 * Camera devices
 * SD Cards
 
-![alt tag](https://dl.dropboxusercontent.com/u/3085879/Works/gihub/device/device_tracker.png)
+![alt tag](http://getglimpses.com/github/device/device_tracker.png)
 
